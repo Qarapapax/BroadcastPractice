@@ -10,7 +10,10 @@ class MyReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         when (intent?.action) {
             Intent.ACTION_AIRPLANE_MODE_CHANGED -> {
-                Toast.makeText(context, "Airplane mod changed", Toast.LENGTH_SHORT).show()
+                val turnedOn = intent.getBooleanExtra("state", false)
+                Toast.makeText(
+                    context, "Airplane mod changed. Turned on $turnedOn", Toast.LENGTH_SHORT
+                ).show()
             }
             Intent.ACTION_BATTERY_LOW -> {
                 Toast.makeText(context, "Battery level LOW", Toast.LENGTH_SHORT).show()
